@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const workspace_controller_1 = require("../controllers/workspace.controller");
+const auth_middleware_1 = require("../middlewares/auth.middleware");
+const router = (0, express_1.Router)();
+router.use(auth_middleware_1.authenticate);
+router.get('/', workspace_controller_1.getMyWorkspaces);
+router.post('/', workspace_controller_1.createWorkspace);
+router.get('/:id', workspace_controller_1.getWorkspaceById);
+exports.default = router;
